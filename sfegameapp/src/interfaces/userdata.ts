@@ -1,4 +1,4 @@
-export default interface userData {
+export interface userData {
   firstName: string;
   lastname: string;
   email: string;
