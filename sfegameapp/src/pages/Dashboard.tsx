@@ -1,6 +1,6 @@
 import DashboardHeader from '../components/DashboardHeader';
 import { useLocation } from 'react-router-dom';
-import BananaGame from '../components/BananaGame';
+import Games from '../components/Games';
 
 function Dashboard() {
   const location = useLocation();
@@ -9,7 +9,7 @@ function Dashboard() {
   return (
     <div className="h-screen bg-yellow-50">
       <DashboardHeader fullname={fullName} />
-      <BananaGame />
+      <Games />
     </div>
   );
 }

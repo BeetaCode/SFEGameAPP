@@ -10,7 +10,10 @@ function DashboardHeader({ fullname }: userData) {
   const navigate = useNavigate();
   console.log(fullname);
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove the token
+    // Remove the token
+    localStorage.removeItem('token');
+    //Clear all Sessions
+    sessionStorage.clear();
     navigate('/login'); // Redirect to login
   };
 

@@ -32,6 +32,9 @@ function LoginForm() {
 
         //Storing JWT Token
         localStorage.setItem('token', response.token);
+
+        //Storing user full name
+        sessionStorage.setItem('fullName', `${fullName}`);
         toast.success('Login Succeessfully');
         setFormData({
           email: '',

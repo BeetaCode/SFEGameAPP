@@ -4,6 +4,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
 import Dashboard from './pages/Dashboard';
+import BananaGame from './components/BananaGame';
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
               </ProtectedRoute>
             }
           /> */}
+          <Route
+            path="/bananagame"
+            element={<BananaGame />}
+          />
         </Routes>
       </Router>
       <ToastContainer />
