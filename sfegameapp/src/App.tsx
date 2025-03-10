@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -30,10 +30,10 @@ function App() {
             path="/"
             element={<Home />}
           />
-          <Route
+          {/* <Route
             path="/dashboard"
             element={<Dashboard />}
-          />
+          /> */}
           {/* <Route
             path="/dashboard"
             element={
