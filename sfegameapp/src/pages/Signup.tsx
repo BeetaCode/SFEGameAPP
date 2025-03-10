@@ -10,7 +10,7 @@ function Signup() {
       <Header />
       <div className="flex flex-col items-center pt-10 pb-2">
         <div className="flex">
-          <div className="backgroundwhitebox ">
+          <div className="signupbackgroundwhitebox ">
             <UserPlus className="signupicon" />
             <div className="mt-0">
               <SignupForm />
