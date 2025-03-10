@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+.icon {
+  @apply w-7 h-7 rounded-e-md text-orange-400;
+}
+
+.whitebox {
+  @apply bg-white rounded-lg p-6 w-70 h-32 shadow-md;
+}

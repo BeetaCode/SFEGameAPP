@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+.loginicon {
+  @apply w-15 h-15 rounded-e-md text-black;
+}
+
+.loginbackgroundwhitebox {
+  @apply bg-white rounded-lg p-20 w-100 h-90 shadow-md pt-4 flex flex-col items-center justify-center;
+}
+
+.loginlabels {
+  @apply block tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+
+.logintextfield {
+  @apply appearance-none block w-70 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-1 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100;
+}
+
+.logindiv {
+  @apply flex flex-wrap pt-2 pb-2;
+}
+
+.logininternaldiv {
+  @apply flex flex-wrap mt-2;
+}
+
+.loginbuttonshadow {
+  @apply shadow-md;
+}
+
+.userloginbutton {
+  @apply bg-blue-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-70 cursor-pointer pb-2;
+}
