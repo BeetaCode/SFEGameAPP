@@ -1,18 +1,20 @@
 import '../styles/dashboard.css';
 import { CircleUserRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 interface userData {
   fullname: string;
 }
 
-function DashboardHeader({ fullname }: userData) {
+const DashboardHeader: React.FC<userData> = React.memo(({ fullname }) => {
   const navigate = useNavigate();
-  console.log(fullname);
+  console.log('DashboardHeader rendered'); // Debugging: Log when the component renders
+
   const handleLogout = () => {
     // Remove the token
     localStorage.removeItem('token');
-    //Clear all Sessions
+    // Clear all sessions
     sessionStorage.clear();
     navigate('/login'); // Redirect to login
   };
@@ -38,6 +40,6 @@ function DashboardHeader({ fullname }: userData) {
       </div>
     </div>
   );
-}
+});
 
 export default DashboardHeader;

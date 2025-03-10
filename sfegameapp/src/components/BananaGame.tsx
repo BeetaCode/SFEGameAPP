@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { getBananaGame } from '../services/bananaGameService';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import DashboardHeader from './DashboardHeader';
 
 function BananaGame() {
-  const fullName = sessionStorage.getItem('fullName');
+  const fullName = useMemo(
+    () => sessionStorage.getItem('fullName') || 'Guest',
+    []
+  );
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [userAnswer, setUserAnswer] = useState('');
@@ -74,7 +77,7 @@ function BananaGame() {
 
   return (
     <div className="h-screen bg-yellow-50">
-      <DashboardHeader fullname={fullName || 'Guest'} />
+      <DashboardHeader fullname={fullName} />
       <div className="flex justify-end">
         <h3 className="font-bold text-2xl text-green-600 mr-10 mt-3">
           Time Remaining: {timeLeft} seconds
@@ -96,14 +99,14 @@ function BananaGame() {
             )}
             <div className="flex items-center mt-10">
               <input
-                className="block w-30 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-2 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100"
+                className="block w-30 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-2 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100 text-center"
                 type="text"
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 placeholder="Your answer"
               />
               <button
-                className="ml-5 bg-blue-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-20 cursor-pointer pb-2"
+                className="ml-5 bg-green-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-20 cursor-pointer pb-2"
                 onClick={checkAnswer}
               >
                 Submit
