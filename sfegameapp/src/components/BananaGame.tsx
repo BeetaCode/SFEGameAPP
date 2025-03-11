@@ -5,6 +5,7 @@ import { AxiosError } from 'axios';
 import DashboardHeader from './DashboardHeader';
 import PartyPopperAnimation from './PartyPopperAnimation'; // Import the Party Popper Animation
 import '../styles/bananagame.css';
+import { sendBananaGameData } from '../services/bananaGameService';
 
 function BananaGame() {
   const fullName = useMemo(
@@ -66,6 +67,15 @@ function BananaGame() {
 
   const checkAnswer = () => {
     if (userAnswer === answer) {
+      if (fullName != 'Guest') {
+        const bananaGameData = {
+          timeConsumed: timeLeft,
+          marks: null,
+          grade: null,
+          playedOn: null,
+        };
+        sendBananaGameData(bananaGameData);
+      }
       setIsCorrect(true);
       setGameOver(true);
     } else {

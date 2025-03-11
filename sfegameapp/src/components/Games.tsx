@@ -17,7 +17,7 @@ function Games() {
         <img
           src={BananaGameImage}
           alt="Button Icon"
-          className="w-48 h-20 rounded-lg"
+          className="w-48 h-20 rounded-lg cursor-pointer"
         />
       </button>
     </div>

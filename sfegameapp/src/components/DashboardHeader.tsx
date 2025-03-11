@@ -9,7 +9,8 @@ interface userData {
 
 const DashboardHeader: React.FC<userData> = React.memo(({ fullname }) => {
   const navigate = useNavigate();
-  console.log('DashboardHeader rendered'); // Debugging: Log when the component renders
+  const token = localStorage.getItem('token');
+  console.log(token);
 
   const handleLogout = () => {
     // Remove the token
@@ -31,12 +32,14 @@ const DashboardHeader: React.FC<userData> = React.memo(({ fullname }) => {
           <CircleUserRound className="w-6 h-6 ml-0 text-gray-700" />
           <h4 className="ml-2">Hi, {fullname}</h4>
         </div>
-        <button
-          onClick={handleLogout}
-          className="userlogoutbutton logoutbuttonshadow"
-        >
-          Logout
-        </button>
+        {token ? (
+          <button
+            onClick={handleLogout}
+            className="userlogoutbutton logoutbuttonshadow"
+          >
+            Logout
+          </button>
+        ) : null}
       </div>
     </div>
   );
