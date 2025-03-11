@@ -3,6 +3,7 @@ import { getBananaGame } from '../services/bananaGameService';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import DashboardHeader from './DashboardHeader';
+import PartyPopperAnimation from './PartyPopperAnimation'; // Import the Party Popper Animation
 import '../styles/bananagame.css';
 
 function BananaGame() {
@@ -13,9 +14,10 @@ function BananaGame() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [userAnswer, setUserAnswer] = useState('');
-  const [timeLeft, setTimeLeft] = useState<number>(60); // 60 seconds timer
+  const [timeLeft, setTimeLeft] = useState<number>(60);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [showPartyPopper, setShowPartyPopper] = useState(false); // Control Party Popper Animation
 
   useEffect(() => {
     fetchQuestion();
@@ -30,7 +32,14 @@ function BananaGame() {
     }
   }, [timeLeft, gameOver]);
 
-  //get question from API
+  // Show Party Popper when answer is correct
+  useEffect(() => {
+    if (isCorrect) {
+      setShowPartyPopper(true); // Show the Party Popper Animation
+      setTimeout(() => setShowPartyPopper(false), 3000); // Hide the animation after 3 seconds
+    }
+  }, [isCorrect]);
+
   const fetchQuestion = async () => {
     try {
       const response = await getBananaGame();
@@ -38,8 +47,6 @@ function BananaGame() {
       setAnswer(response.solution.toString());
       console.log(response.solution);
     } catch (error) {
-      // Handle errors
-      // Type guard to check if the error is an AxiosError
       if (error instanceof AxiosError) {
         if (
           Array.isArray(error.response?.data) &&
@@ -50,10 +57,8 @@ function BananaGame() {
           toast.error(error.response?.data[0]);
         }
       } else if (error instanceof Error) {
-        // Handle generic errors
         toast.error(error.message);
       } else {
-        // Handle unknown errors
         toast.error('An unexpected error occurred.');
       }
     }
@@ -73,6 +78,7 @@ function BananaGame() {
     setTimeLeft(60);
     setIsCorrect(null);
     setUserAnswer('');
+    setShowPartyPopper(false); // Hide the Party Popper Animation
     fetchQuestion();
   };
 
@@ -84,6 +90,7 @@ function BananaGame() {
           Time Remaining: {timeLeft} seconds
         </h3>
       </div>
+
       {/* Game UI */}
       {!gameOver ? (
         <>
@@ -122,7 +129,7 @@ function BananaGame() {
         {(() => {
           if (isCorrect) {
             return (
-              <h2 className="text-green-400 text-3xl">Answer is correct!</h2>
+              <h2 className="text-green-400 text-3xl">Answer is correct! 🎉</h2>
             );
           } else if (isCorrect === false) {
             return (
@@ -137,7 +144,7 @@ function BananaGame() {
               </h2>
             );
           }
-          return null; // No message if the game is still running
+          return null;
         })()}
         {gameOver && (
           <button
@@ -148,6 +155,9 @@ function BananaGame() {
           </button>
         )}
       </div>
+
+      {/* Party Popper Animation */}
+      {showPartyPopper && <PartyPopperAnimation />}
     </div>
   );
 }
