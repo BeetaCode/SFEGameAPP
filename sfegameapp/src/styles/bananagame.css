@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+.bganswertextbox {
+  @apply block w-30 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-2 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100 text-center;
+}
+
+.bgsubmitbutton {
+  @apply bg-green-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer shadow-md ml-5;
+}
+
+.bgresetbutton {
+  @apply bg-pink-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer shadow-md mt-10;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-emoji {
+  display: inline-block;
+  animation: pop 0.5s ease-in-out;
+}

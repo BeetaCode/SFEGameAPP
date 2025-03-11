@@ -3,6 +3,7 @@ import { getBananaGame } from '../services/bananaGameService';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import DashboardHeader from './DashboardHeader';
+import '../styles/bananagame.css';
 
 function BananaGame() {
   const fullName = useMemo(
@@ -99,14 +100,14 @@ function BananaGame() {
             )}
             <div className="flex items-center mt-10">
               <input
-                className="block w-30 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-2 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100 text-center"
+                className="bganswertextbox"
                 type="text"
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 placeholder="Your answer"
               />
               <button
-                className="ml-5 bg-green-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-20 cursor-pointer pb-2"
+                className="bgsubmitbutton"
                 onClick={checkAnswer}
               >
                 Submit
@@ -117,18 +118,35 @@ function BananaGame() {
       ) : null}
 
       {/* Conditional Message at the Bottom */}
-      <div>
+      <div className="flex flex-col items-center justify-center text-center pt-10">
         {(() => {
           if (isCorrect) {
-            return <h2>Answer is correct!</h2>;
+            return (
+              <h2 className="text-green-400 text-3xl">Answer is correct!</h2>
+            );
           } else if (isCorrect === false) {
-            return <h2>Wrong Answer. Please try again.</h2>;
+            return (
+              <h2 className="text-red-500 text-2xl">
+                Wrong Answer. Please try again.
+              </h2>
+            );
           } else if (gameOver) {
-            return <h2>Time is over! The correct answer was {answer}</h2>;
+            return (
+              <h2 className="text-red-500 text-2xl">
+                Time is over! The correct answer was {answer}
+              </h2>
+            );
           }
           return null; // No message if the game is still running
         })()}
-        {gameOver && <button onClick={resetGame}>Play Again</button>}
+        {gameOver && (
+          <button
+            className="bgresetbutton"
+            onClick={resetGame}
+          >
+            Play Again
+          </button>
+        )}
       </div>
     </div>
   );
