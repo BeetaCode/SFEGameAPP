@@ -6,8 +6,11 @@ import DashboardHeader from './DashboardHeader';
 import PartyPopperAnimation from './PartyPopperAnimation'; // Import the Party Popper Animation
 import '../styles/bananagame.css';
 import { sendBananaGameData } from '../services/bananaGameService';
+import { useNavigate } from 'react-router-dom';
 
 function BananaGame() {
+  const navigate = useNavigate();
+
   const fullName = useMemo(
     () => sessionStorage.getItem('fullName') || 'Guest',
     []
@@ -80,6 +83,7 @@ function BananaGame() {
       setGameOver(true);
     } else {
       setIsCorrect(false);
+      setUserAnswer('');
     }
   };
 
@@ -93,7 +97,7 @@ function BananaGame() {
   };
 
   return (
-    <div className="h-screen bg-yellow-50">
+    <div className="h-screen bg-yellow-100">
       <DashboardHeader fullname={fullName} />
       <div className="flex justify-end">
         <h3 className="font-bold text-2xl text-green-600 mr-10 mt-3">
@@ -101,20 +105,23 @@ function BananaGame() {
         </h3>
       </div>
 
+      <div className="flex flex-col items-center justify-center text-center">
+        <h2 className="text-amber-400 text-3xl p-4">Question:</h2>
+        {question && (
+          <div>
+            <img
+              className="mt-6 w-150 h-auto shadow-xl rounded-2xl"
+              src={question}
+              alt="Math Problem"
+            />
+          </div>
+        )}
+      </div>
+
       {/* Game UI */}
       {!gameOver ? (
         <>
           <div className="flex flex-col items-center justify-center text-center">
-            <h2 className="text-amber-400 text-3xl p-4">Question:</h2>
-            {question && (
-              <div>
-                <img
-                  className="mt-6 w-150 h-auto shadow-xl rounded-2xl"
-                  src={question}
-                  alt="Math Problem"
-                />
-              </div>
-            )}
             <div className="flex items-center mt-10">
               <input
                 className="bganswertextbox"
@@ -135,7 +142,7 @@ function BananaGame() {
       ) : null}
 
       {/* Conditional Message at the Bottom */}
-      <div className="flex flex-col items-center justify-center text-center pt-10">
+      <div className="flex flex-col items-center justify-center text-center mt-5">
         {(() => {
           if (isCorrect) {
             return (
@@ -168,6 +175,16 @@ function BananaGame() {
 
       {/* Party Popper Animation */}
       {showPartyPopper && <PartyPopperAnimation />}
+      {fullName != 'Guest' && (
+        <div className="flex flex-col items-center justify-center text-center pt-5">
+          <button
+            className="bgdaschboardbutton"
+            onClick={() => navigate('/Dashboard', { state: { fullName } })}
+          >
+            Back to Dashboard
+          </button>
+        </div>
+      )}
     </div>
   );
 }

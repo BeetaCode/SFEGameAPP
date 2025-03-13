@@ -12,6 +12,10 @@
   @apply bg-pink-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer shadow-md mt-10;
 }
 
+.bgdaschboardbutton {
+  @apply bg-white hover:bg-amber-400 text-black font-bold py-2 rounded w-50 cursor-pointer shadow-md mt-0;
+}
+
 @keyframes pop {
   0% {
     transform: scale(0);

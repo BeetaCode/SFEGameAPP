@@ -5,7 +5,7 @@ import LoginForm from '../components/LoginForm';
 
 function Login() {
   return (
-    <div className="h-screen bg-yellow-50">
+    <div className="h-screen bg-yellow-100">
       <Header />
       <div className="flex flex-col items-center pt-10 pb-2">
         <div className="flex">

@@ -5,7 +5,7 @@ function Games() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white h-50 shadow-md flex flex-col justify-between items-start mt-5 ml-20 mr-150 rounded-2xl p-5">
+    <div className="bg-white h-50 shadow-md flex flex-col justify-between items-start rounded-2xl p-5">
       <div>
         <h2 className="font-bold text-xl pl-1">Available Games</h2>
       </div>

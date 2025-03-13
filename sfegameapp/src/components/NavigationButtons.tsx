@@ -30,7 +30,7 @@ function NavigationButtons() {
         )}
         <button
           className="guestbutton shadow"
-          onClick={() => navigate('/home')} // Navigate to Home
+          onClick={() => navigate('/bananagame')} // Navigate to Home
         >
           Guest
         </button>
