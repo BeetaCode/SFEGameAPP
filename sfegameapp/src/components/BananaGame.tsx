@@ -72,7 +72,7 @@ function BananaGame() {
     if (userAnswer === answer) {
       if (fullName != 'Guest') {
         const bananaGameData = {
-          timeConsumed: timeLeft,
+          timeConsumed: 60 - timeLeft,
           marks: null,
           grade: null,
           playedOn: null,

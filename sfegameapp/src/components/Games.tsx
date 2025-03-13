@@ -11,7 +11,7 @@ function Games() {
       </div>
       <h4 className="pl-1 text-gray-600">Banana Game</h4>
       <button
-        className="bg-blue-600 h-22 shadow-md rounded-lg w-50 mb-2 flex items-center justify-center"
+        className="bg-blue-600 h-22 shadow-md rounded-lg w-50 mb-2 flex items-center justify-center cursor-pointer"
         onClick={() => navigate('/bananagame')}
       >
         <img
