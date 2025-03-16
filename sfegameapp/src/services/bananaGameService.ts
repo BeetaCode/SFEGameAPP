@@ -15,8 +15,6 @@ export const sendBananaGameData = async (bananaGameData: bananaGameData) => {
     throw new Error('No token found. Please log in again.');
   }
 
-  console.log('Token:', token);
-
   const response = await axios.post(
     `${BANANA_GAME_DATA_API_URL}/add-user-marks`,
     bananaGameData,

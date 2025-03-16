@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Rewards() {
   return (
     <div className="bg-white h-60 shadow-md flex flex-col justify-between items-start rounded-2xl p-5 -mb-5">

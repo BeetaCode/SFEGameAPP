@@ -52,17 +52,6 @@ function BananaGame() {
       console.log(response.solution);
     } catch (error) {
       if (error instanceof AxiosError) {
-        if (
-          Array.isArray(error.response?.data) &&
-          error.response.data[0]?.includes('is already taken')
-        ) {
-          toast.error('There is an existing account with this email.');
-        } else {
-          toast.error(error.response?.data[0]);
-        }
-      } else if (error instanceof Error) {
-        toast.error(error.message);
-      } else {
         toast.error('An unexpected error occurred.');
       }
     }
