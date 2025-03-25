@@ -7,6 +7,7 @@ import {
   leaderboardEntry,
 } from '../interfaces/leaderboarddata';
 import { data } from 'react-router-dom';
+import { CircleUserRound } from 'lucide-react';
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState<leaderboarddata>({
@@ -30,18 +31,32 @@ function Leaderboard() {
   };
 
   return (
-    <div className="bg-white h-120 shadow-md flex flex-col justify-between items-start rounded-2xl p-5">
+    <div className="bg-white h-125 shadow-md flex flex-col justify-between items-start rounded-2xl p-5">
       <div>
         <h2 className="font-bold text-xl pl-1">Leaderboard</h2>
       </div>
+      <div className=" ml-70 flex justify-end bg-amber-500 rounded shadow-md">
+        <select className="text-right w-30">
+          <option className="bg-amber-600 hover:bg-amber-700">
+            Banana Game
+          </option>
+          <option className="bg-amber-600 hover:bg-amber-700">
+            Tomato Game
+          </option>
+          <option className="bg-amber-600 hover:bg-amber-700">
+            Smile Game
+          </option>
+        </select>
+      </div>
+
       <div className="w-full mb-70">
         {leaderboardData.result.length > 0 ? (
           <table className="w-full">
             <thead>
               <tr>
-                <th className="text-left">Rank</th>
+                {/* <th className="text-left">Rank</th>
                 <th className="text-left">Name</th>
-                <th className="text-left">Time Consumed</th>
+                <th className="text-left">Time Consumed</th> */}
               </tr>
             </thead>
             <tbody>
@@ -49,9 +64,11 @@ function Leaderboard() {
                 (entry: leaderboardEntry, index: number) => (
                   <tr
                     key={entry.applicationUserId}
-                    className="border-b"
+                    className="border-b border-amber-500"
                   >
-                    <td className="py-2">{index + 1}</td>
+                    <td className="py-2">
+                      <CircleUserRound className="w-6 h-6 ml-0 text-gray-700" />
+                    </td>
                     <td className="py-2">
                       {entry.firstName} {entry.lastName}
                     </td>

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Dashboard from './pages/Dashboard';
 import BananaGame from './components/BananaGame';
 import TomatoGame from './components/TomatoGame';
+import SmileGame from './components/SmileGame';
 // import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
           <Route
             path="/tomatogame"
             element={<TomatoGame />}
+          />
+          <Route
+            path="/smilegame"
+            element={<SmileGame />}
           />
         </Routes>
       </Router>
