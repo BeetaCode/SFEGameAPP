@@ -1,16 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
 import {
-  getBananaGame,
-  sendBananaGameData,
-} from '../services/bananaGameService';
+  getTomatoGame,
+  sendTomatoGameData,
+} from '../services/tomatoGameService';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import DashboardHeader from './DashboardHeader';
 import PartyPopperAnimation from './PartyPopperAnimation'; // Import the Party Popper Animation (Used AI tool to get the code)
-import '../styles/bananagame.css';
+import '../styles/tomatogame.css';
 import { useNavigate } from 'react-router-dom';
 
-function BananaGame() {
+function TomatoGame() {
   const navigate = useNavigate();
 
   const fullName = useMemo(
@@ -48,7 +48,7 @@ function BananaGame() {
 
   const fetchQuestion = async () => {
     try {
-      const response = await getBananaGame();
+      const response = await getTomatoGame();
       setQuestion(response.question);
       setAnswer(response.solution.toString());
       console.log(response.solution);
@@ -62,13 +62,13 @@ function BananaGame() {
   const checkAnswer = () => {
     if (userAnswer === answer) {
       if (fullName != 'Guest') {
-        const bananaGameData = {
+        const tomatoGameData = {
           timeConsumed: 60 - timeLeft,
           marks: null,
           grade: null,
           playedOn: null,
         };
-        sendBananaGameData(bananaGameData);
+        sendTomatoGameData(tomatoGameData);
       }
       setIsCorrect(true);
       setGameOver(true);
@@ -88,7 +88,7 @@ function BananaGame() {
   };
 
   return (
-    <div className="h-screen bg-yellow-100">
+    <div className="h-screen bg-red-300">
       <DashboardHeader fullname={fullName} />
       <div className="flex justify-end">
         <h3 className="font-bold text-2xl text-green-600 mr-10 mt-3">
@@ -97,7 +97,7 @@ function BananaGame() {
       </div>
 
       <div className="flex flex-col items-center justify-center text-center">
-        <h2 className="text-amber-400 text-3xl p-4">Question:</h2>
+        <h2 className="text-red-400 text-3xl p-4">Question:</h2>
         {question && (
           <div>
             <img
@@ -180,4 +180,4 @@ function BananaGame() {
   );
 }
 
-export default BananaGame;
+export default TomatoGame;

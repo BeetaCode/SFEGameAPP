@@ -24,7 +24,7 @@ const DashboardHeader: React.FC<userData> = React.memo(({ fullname }) => {
     <div className="bg-white h-15 shadow-md flex justify-between items-center">
       <div className="pt-2 pl-10">
         <h2 className="font-mono font-extrabold text-4xl embossed-text">
-          BananaHub
+          GameHub
         </h2>
       </div>
       <div className="flex items-center gap-4 pr-6">

@@ -5,7 +5,8 @@ import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
 import Dashboard from './pages/Dashboard';
 import BananaGame from './components/BananaGame';
-import ProtectedRoute from './components/ProtectedRoute';
+import TomatoGame from './components/TomatoGame';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -36,14 +37,18 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Dashboard />
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/bananagame"
             element={<BananaGame />}
+          />
+          <Route
+            path="/tomatogame"
+            element={<TomatoGame />}
           />
         </Routes>
       </Router>
