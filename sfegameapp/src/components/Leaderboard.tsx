@@ -38,7 +38,7 @@ function Leaderboard() {
   };
 
   return (
-    <div className="bg-white h-125 shadow-md flex flex-col fy-between items-start rounded-2xl p-5">
+    <div className="bg-white h-143 shadow-md flex flex-col fy-between items-start rounded-2xl p-5">
       <div>
         <h2 className="font-bold text-xl pl-1">Leaderboard</h2>
       </div>
