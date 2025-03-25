@@ -6,22 +6,21 @@ import {
   leaderboarddata,
   leaderboardEntry,
 } from '../interfaces/leaderboarddata';
-import { data } from 'react-router-dom';
 import { CircleUserRound } from 'lucide-react';
 
 function Leaderboard() {
+  const [selectedGame, setSelectedGame] = useState('banana');
   const [leaderboardData, setLeaderboardData] = useState<leaderboarddata>({
     result: [],
   });
 
   useEffect(() => {
-    getLeaderboardData();
+    getLeaderboardData(selectedGame);
   }, []);
 
-  const getLeaderboardData = async () => {
+  const getLeaderboardData = async (game: string) => {
     try {
-      const response = await leaderboardService();
-      console.log(response, data);
+      const response = await leaderboardService(game);
       setLeaderboardData(response.data);
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -30,20 +29,41 @@ function Leaderboard() {
     }
   };
 
+  const handleGameChange = async (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const game = event.target.value;
+    setSelectedGame(game);
+    await getLeaderboardData(game); // Use the directly passed value
+  };
+
   return (
-    <div className="bg-white h-125 shadow-md flex flex-col justify-between items-start rounded-2xl p-5">
+    <div className="bg-white h-125 shadow-md flex flex-col fy-between items-start rounded-2xl p-5">
       <div>
         <h2 className="font-bold text-xl pl-1">Leaderboard</h2>
       </div>
-      <div className=" ml-70 flex justify-end bg-amber-500 rounded shadow-md">
-        <select className="text-right w-30">
-          <option className="bg-amber-600 hover:bg-amber-700">
+      <div className=" ml-70 bg-amber-500 rounded shadow-md w-30">
+        <select
+          className="text-right w-30"
+          onChange={handleGameChange}
+          // value={selectedGame}
+        >
+          <option
+            className="bg-amber-600 hover:bg-amber-700"
+            value="banana"
+          >
             Banana Game
           </option>
-          <option className="bg-amber-600 hover:bg-amber-700">
+          <option
+            className="bg-amber-600 hover:bg-amber-700"
+            value="tomato"
+          >
             Tomato Game
           </option>
-          <option className="bg-amber-600 hover:bg-amber-700">
+          <option
+            className="bg-amber-600 hover:bg-amber-700"
+            value="smile"
+          >
             Smile Game
           </option>
         </select>
@@ -60,22 +80,20 @@ function Leaderboard() {
               </tr>
             </thead>
             <tbody>
-              {leaderboardData.result.map(
-                (entry: leaderboardEntry, index: number) => (
-                  <tr
-                    key={entry.applicationUserId}
-                    className="border-b border-amber-500"
-                  >
-                    <td className="py-2">
-                      <CircleUserRound className="w-6 h-6 ml-0 text-gray-700" />
-                    </td>
-                    <td className="py-2">
-                      {entry.firstName} {entry.lastName}
-                    </td>
-                    <td className="py-2">{entry.minTimeConsumed} seconds</td>
-                  </tr>
-                )
-              )}
+              {leaderboardData.result.map((entry: leaderboardEntry) => (
+                <tr
+                  key={entry.applicationUserId}
+                  className="border-b border-amber-500"
+                >
+                  <td className="py-2">
+                    <CircleUserRound className="w-6 h-6 ml-0 text-gray-700" />
+                  </td>
+                  <td className="py-2">
+                    {entry.firstName} {entry.lastName}
+                  </td>
+                  <td className="py-2">{entry.minTimeConsumed} seconds</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         ) : (
