@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+.bganswertextbox {
+  @apply block w-30 bg-yellow-200 text-gray-700 border border-gray-500 rounded py-2 px-4 mb-0 leading-tight focus:outline-none focus:bg-yellow-100 text-center;
+}
+
+.bgsubmitbutton {
+  @apply bg-green-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer shadow-md ml-5;
+}
+
+.bgresetbutton {
+  @apply bg-pink-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer shadow-md mt-10;
+}
+
+.bgdaschboardbutton {
+  @apply bg-white hover:bg-amber-400 text-black font-bold py-2 rounded w-50 cursor-pointer shadow-md mt-0;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-emoji {
+  display: inline-block;
+  animation: pop 0.5s ease-in-out;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 100; /* Ensure the modal is on top */
+}
+
+/* Overlay Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure the overlay is below the modal but above everything else */
+}

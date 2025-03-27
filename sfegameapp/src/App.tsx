@@ -3,7 +3,11 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
-// import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
+import BananaGame from './components/BananaGame';
+import TomatoGame from './components/TomatoGame';
+import SmileGame from './components/SmileGame';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -30,18 +34,27 @@ function App() {
             path="/"
             element={<Home />}
           />
-          {/* <Route
-            path="/dashboard"
-            element={<Dashboard />}
-          /> */}
-          {/* <Route
+
+          <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             }
-          /> */}
+          />
+          <Route
+            path="/bananagame"
+            element={<BananaGame />}
+          />
+          <Route
+            path="/tomatogame"
+            element={<TomatoGame />}
+          />
+          <Route
+            path="/smilegame"
+            element={<SmileGame />}
+          />
         </Routes>
       </Router>
       <ToastContainer />

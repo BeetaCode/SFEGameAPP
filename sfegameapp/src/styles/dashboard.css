@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+.embossed-text {
+  color: #fbbf24; /* Tailwind's amber-300 */
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    /* Top-left highlight */ 1px 1px 1px rgba(0, 0, 0, 0.6); /* Bottom-right shadow */
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-color: transparent;
+}
+
+.logoutbuttonshadow {
+  @apply shadow-md;
+}
+
+.userlogoutbutton {
+  @apply bg-blue-400 hover:bg-amber-600 text-white font-bold py-2 rounded w-30 cursor-pointer pb-2;
+}

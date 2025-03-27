@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 function Home() {
   return (
-    <div className="h-screen bg-yellow-50">
+    <div className="h-screen bg-yellow-100">
       <Header />
       <HomeItems />
       <NavigationButtons />
