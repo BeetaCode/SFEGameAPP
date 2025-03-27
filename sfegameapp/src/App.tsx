@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard';
 import BananaGame from './components/BananaGame';
 import TomatoGame from './components/TomatoGame';
 import SmileGame from './components/SmileGame';
-// import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -38,9 +38,9 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              // <ProtectedRoute>
-              <Dashboard />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
             }
           />
           <Route
