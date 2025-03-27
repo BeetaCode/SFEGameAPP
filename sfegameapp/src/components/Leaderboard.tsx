@@ -50,7 +50,7 @@ function Leaderboard() {
       w-full 
       px-4 
       py-2 
-      pr-10 
+      pr-18 
       text-right 
       bg-amber-500 
       hover:bg-amber-600 

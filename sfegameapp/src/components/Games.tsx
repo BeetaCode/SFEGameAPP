@@ -35,7 +35,7 @@ function Games() {
 
   return (
     <div className="bg-white shadow-xl rounded-3xl p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-8">Available Games</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-8">Available Games</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {games.map((game, index) => (
