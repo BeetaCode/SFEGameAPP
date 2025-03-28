@@ -42,7 +42,7 @@ function Rewards() {
   return (
     <div className="bg-white h-60 shadow-md flex flex-col justify-between items-start rounded-2xl p-5 mt-5">
       <div>
-        <h2 className="font-bold text-xl pl-1">Your Rewards</h2>
+        <h2 className="font-bold text-xl pl-1">Rewards</h2>
       </div>
       {/* Select styles Got from Deep Seek AI*/}
       <div className="relative w-48 ml-150">

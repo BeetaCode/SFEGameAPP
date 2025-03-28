@@ -34,7 +34,7 @@ function App() {
             path="/"
             element={<Home />}
           />
-
+          {/* Dashboard route */}
           <Route
             path="/dashboard"
             element={
@@ -43,14 +43,17 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* Banana Game route */}
           <Route
             path="/bananagame"
             element={<BananaGame />}
           />
+          {/* Tomato Game route */}
           <Route
             path="/tomatogame"
             element={<TomatoGame />}
           />
+          {/* Smile Game route */}
           <Route
             path="/smilegame"
             element={<SmileGame />}
